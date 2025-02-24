@@ -57,3 +57,23 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+install angular cli
+npm install -g @angular/cli
+
+Created project with
+ng new cli-angular-app
+
+Installed Tailwind CSS and Its Dependencies
+npm install -D tailwindcss postcss autoprefixer
+
+ Initialized Tailwind and PostCSS Configuration
+ npx tailwindcss init -p
+
+
+for icons I used Font Awesome
+
+npm install @fortawesome/angular-fontawesome @fortawesome/fontawesome-svg-core @fortawesome/free-brands-svg-icons
+
+
+
