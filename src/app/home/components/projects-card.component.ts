@@ -7,34 +7,36 @@ import { faLink } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-projects-card',
   standalone: true,
-  imports: [CommonModule, FontAwesomeModule,NgFor],
+  imports: [CommonModule, FontAwesomeModule, NgFor],
   template: `
-    <!-- The entire card is wrapped in an anchor tag to make it clickable -->
     <a [href]="projects.url || '#'" class="group block">
       <div
-        class="p-6  rounded-lg shadow-sm transition duration-300 group-hover:shadow-lg group-hover:bg-slate-800 cursor-pointer"
+        class="p-6 rounded-lg shadow-sm transition duration-300 group-hover:shadow-lg group-hover:bg-slate-800 cursor-pointer"
       >
-        <div class="grid grid-cols-4 ">
-          <div class="text-sm text-gray-500 font-medium col-span-1">
-            <img [src]="projects.thubnail" alt="course thumbnail" class="w-96 h-40 rounded-lg aspect-square object-contain">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <!-- Thumbnail -->
+          <div class="col-span-1 flex justify-center md:justify-start">
+            <img
+              [src]="projects.thubnail"
+              alt="{{ projects.title }} thumbnail"
+              class="w-full max-w-xs h-40 md:h-36 rounded-lg object-contain"
+            />
           </div>
-          <div class="flex  flex-col col-span-3">
-            <div
-              class="text-lg font-semibold text-whit"
-            >
+
+          <!-- Project Details -->
+          <div class="flex flex-col col-span-3">
+            <div class="text-lg font-semibold text-white flex items-center">
               {{ projects.title }}
               <fa-icon
                 [icon]="faArrowRight"
-                animation="beat"
                 class="ml-2 text-gray-500 transition-transform duration-300 group-hover:translate-x-2"
               ></fa-icon>
             </div>
-            <div>
-              <!-- Description -->
-              <p class="mt-4 text-gray-300 ">
-                {{ projects.description }}
-              </p>
-            </div> 
+
+            <!-- Description -->
+            <p class="mt-4 text-gray-300">
+              {{ projects.description }}
+            </p>
 
             <!-- Skills / Tags -->
             <div class="mt-4 flex flex-wrap gap-2">
@@ -58,12 +60,11 @@ export class ProjectsCardComponent {
     stars?: number;
     totalStudents?: number;
     description: string;
-    downloads?:string;
+    downloads?: string;
     skills: string[];
     url?: string;
   };
 
   faArrowRight = faArrowRight;
   faLink = faLink;
-  
 }
