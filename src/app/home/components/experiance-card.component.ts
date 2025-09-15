@@ -1,57 +1,51 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule, NgFor } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { faLink } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight, faLink } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-experience-card',
   standalone: true,
-  imports: [CommonModule, FontAwesomeModule,NgFor],
+  imports: [CommonModule, FontAwesomeModule, NgFor],
   template: `
-    <!-- The entire card is wrapped in an anchor tag to make it clickable -->
     <a [href]="experience.url || '#'" class="group block">
       <div
-        class="p-6  rounded-lg shadow-sm transition duration-300 group-hover:shadow-lg group-hover:bg-slate-800 cursor-pointer"
+        class="p-6 rounded-lg shadow-sm transition duration-300 group-hover:shadow-lg group-hover:bg-slate-800 cursor-pointer"
       >
-        <!-- Header: Dates on the left, and role/company details with an animated arrow on the right -->
-        <div class="grid grid-cols-4 ">
-          <div class="text-sm text-gray-500 font-medium col-span-1">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-2">
+          <!-- Dates -->
+          <div class="text-sm text-gray-500 font-medium">
             {{ experience.startingDate }} - {{ experience.endingDate }}
           </div>
-          <div class="flex  flex-col col-span-3">
-            <div
-              class="text-lg font-semibold text-whit"
-            >
+
+          <!-- Role & Company -->
+          <div class="flex flex-col md:col-span-3">
+            <div class="text-lg font-semibold text-white flex items-center">
               {{ experience.role }}, {{ experience.field }} .
               {{ experience.companyName }}
               <fa-icon
                 [icon]="faArrowRight"
-                animation="beat"
                 class="ml-2 text-gray-500 transition-transform duration-300 group-hover:translate-x-2"
               ></fa-icon>
             </div>
-            <div>
-              <!-- Description -->
-              <p class="mt-4 text-gray-300 ">
-                {{ experience.description }}
-              </p>
-            </div>
-            <!-- Projects link with name -->
-<div class="mt-2">
-    <a 
 
-    *ngFor ="let project of experience.projects"
-    [href]="project.url">
-    <fa-icon
-                [icon]="faLink"
-                class="ml-2 text-gray-500 transition-transform duration-300 group-hover:translate-x-2"
+            <!-- Description -->
+            <p class="mt-4 text-gray-300">
+              {{ experience.description }}
+            </p>
+
+            <!-- Projects (optional) -->
+            <div *ngIf="experience.projects?.length" class="mt-2 flex flex-wrap gap-2">
+              <a
+                *ngFor="let project of experience.projects"
+                [href]="project.url"
+                class="text-sm text-blue-400 hover:underline flex items-center gap-1"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-            </fa-icon>
-    {{project.name}}
-
-</a>
-</div>
+                <fa-icon [icon]="faLink"></fa-icon> {{ project.name }}
+              </a>
+            </div>
 
             <!-- Skills / Tags -->
             <div class="mt-4 flex flex-wrap gap-2">
@@ -83,5 +77,4 @@ export class ExperienceCardComponent {
 
   faArrowRight = faArrowRight;
   faLink = faLink;
-  
 }
