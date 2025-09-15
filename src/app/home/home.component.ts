@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { SocialLinksComponent } from './components/social-links.component';
 import { ExperienceCardComponent } from './components/experiance-card.component';
-import { NgClass, NgFor } from '@angular/common';
+import { NgClass, NgFor, TitleCasePipe } from '@angular/common';
 import { ProjectsCardComponent } from './components/projects-card.component';
 
 @Component({
@@ -12,6 +12,7 @@ import { ProjectsCardComponent } from './components/projects-card.component';
     NgFor,
     ProjectsCardComponent,
     NgClass,
+    TitleCasePipe,
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
