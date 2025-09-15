@@ -1,148 +1,117 @@
 <main
   class="h-screen bg-gradient-to-r grid grid-cols-1 lg:grid-cols-2 md:grid-cols-1 from-slate-800 to-slate-900 p-5 text-white"
 >
-  <div class="p-5 text-white">
-    <div
-      class="p-3 bg-pink-800 rounded-full w-32 h-32 flex items-center justify-center"
-    >
+  <!-- Left Sidebar -->
+  <div class="p-5 text-white flex flex-col items-center lg:items-start">
+    <!-- Profile Image -->
+    <div class="p-3 bg-pink-800 rounded-full w-32 h-32 flex items-center justify-center">
       <img
         src="https://res.cloudinary.com/dhlnyt7hf/image/upload/v1739294058/Screenshot_20240508-220120_m1fafj.jpg"
         alt="profile"
         class="w-32 h-32 rounded-full object-cover"
       />
     </div>
-    <h1 class="font-extrabold text-3xl">Bhim Prasad Adhikari</h1>
-    <h2 class="font-semibold text-xl">Full-stack Developer</h2>
 
-    <p class="mt-2">
-      I build web applications that truly fascinates the users. I love to work
-      with the latest technologies and frameworks. I am a quick learner and
-      always ready to learn new things.
+    <!-- Name and Title -->
+    <h1 class="font-extrabold text-3xl mt-4 text-center lg:text-left">Bhim Prasad Adhikari</h1>
+    <h2 class="font-semibold text-xl text-center lg:text-left">
+      Aspiring Machine Learning Engineer | Full-Stack Developer
+    </h2>
+
+    <!-- Short Intro -->
+    <p class="mt-2 text-center lg:text-left">
+      I build intelligent applications using AI, ML, and modern web technologies.
+      Passionate about creating data-driven solutions and deploying scalable software.
     </p>
 
-    <nav class="flex flex-col mt-10">
-      <div class="flex items-center gap-1 group">
+    <!-- Resume CTA -->
+    <a
+      href="https://drive.google.com/file/d/1Ri7Iq02xJ5ArztOLemOKiuTIsHIql9j0/view?usp=sharing"
+      class="bg-pink-600 text-white px-4 py-2 mt-4 rounded-md hover:bg-pink-700"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Download Resume
+    </a>
+
+    <!-- Navigation -->
+    <nav class="flex flex-col mt-10 w-full">
+      <div class="flex items-center gap-1 group" *ngFor="let section of ['about','experience','projects','skills']">
         <div
           [ngClass]="
-            activeSection === 'about'
+            activeSection === section
               ? 'bg-white group-hover:w-14 w-14 h-1 transition-all rounded-md'
               : 'w-11 h-1 bg-gray-400 group-hover:w-14 transition-all rounded-md'
           "
         ></div>
         <a
-          href="#about"
-          [ngClass]="activeSection === 'about' ? 'text-white' : 'text-gray-400'"
-          >About</a
+          [href]="'#'+section"
+          [ngClass]="activeSection === section ? 'text-white' : 'text-gray-400'"
         >
-      </div>
-      <div class="flex items-center gap-1 group">
-        <div
-          [ngClass]="
-            activeSection === 'experience'
-              ? 'bg-white group-hover:w-14 w-14 h-1 transition-all rounded-md'
-              : 'w-11 h-1 bg-gray-400 group-hover:w-14 transition-all rounded-md'
-          "
-        ></div>
-        <a
-          href="#experience"
-          [ngClass]="
-            activeSection === 'experience' ? 'text-white' : 'text-gray-400'
-          "
-          >experience</a
-        >
-      </div>
-      <div class="flex items-center gap-1 group">
-        <div
-          [ngClass]="
-            activeSection === 'projects'
-              ? 'bg-white group-hover:w-14 w-14 h-1 transition-all rounded-md'
-              : 'w-11 h-1 bg-gray-400 group-hover:w-14 transition-all rounded-md'
-          "
-        ></div>
-        <a
-          href="#projects"
-          [ngClass]="
-            activeSection === 'projects' ? 'text-white' : 'text-gray-400'
-          "
-          >projects</a
-        >
+          {{ section | titlecase }}
+        </a>
       </div>
     </nav>
 
-    <app-social-links></app-social-links>
+    <!-- Social Links -->
+    <app-social-links class="mt-6"></app-social-links>
   </div>
 
+  <!-- Right Scrollable Container -->
   <div
-    class="p-5 rounded-lg text-white no-scrollbar overflow-y-auto"
+    class="p-5 rounded-lg text-white no-scrollbar overflow-y-auto h-screen"
     #scrollableContainer
   >
+    <!-- About Section -->
     <section id="about" class="min-h-3.5">
       <h2 class="text-2xl font-semibold">About Me</h2>
       <p class="mt-2">
-        I am a full-stack developer with
-        <span class="font-bold">3 years of experience in web development </span
-        >. I have worked on various projects and have experience in working with
-        different technologies and frameworks. I am a quick learner and always
-        ready to learn new things.
+        I am an aspiring <span class="font-bold">Machine Learning Engineer</span> pursuing B.Tech in Computer Science (AI & ML). 
+        I have hands-on experience in building AI-powered applications, deploying ML models, and developing scalable full-stack solutions.
       </p>
       <p class="mt-2">
-        I am passionate about building web applications that truly fascinates
-        the users. I love to work with the latest technologies and frameworks.
-        <span class="font-bold">
-          I have experience in working with technologies like Angular, React,
-          Node.js, Express.js, MongoDB, and MySQL.
-        </span>
+        My expertise includes <span class="font-bold">TensorFlow, Node.js, Next.js, React, FastAPI, Django, MongoDB, PostgreSQL, Redis, Firebase, BigQuery, Google Cloud AI solutions, LangChain</span>.
       </p>
       <p class="mt-2">
-        my approach while desinging frontend and backend is to keep it simple
-        and user-friendly. I always try to build applications that are easy to
-        use and understand. I believe that a good user experience is the key to
-        the success of any application.
+        I enjoy creating intelligent systems, chatbots, and web applications that combine AI with real-world impact, focusing on simplicity and user experience.
       </p>
     </section>
 
-    <section id="experience" class="mt-16 space-y-2 min-h-3.5">
-      <h2 class="text-2xl font-semibold">Experience</h2>
-      <app-experience-card
-        *ngFor="let experience of experiences"
-        [experience]="experience"
-      >
-      </app-experience-card>
-      <div class="mt-16">
-        <a
-          href="https://drive.google.com/file/d/1Ri7Iq02xJ5ArztOLemOKiuTIsHIql9j0/view?usp=sharing"
-          class="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600"
-        >
-          View Resume
-        </a>
+    <!-- Skills Section -->
+    <section id="skills" class="mt-16">
+      <h2 class="text-2xl font-semibold">Skills</h2>
+      <div class="mt-4 flex flex-wrap gap-2">
+        <span *ngFor="let skill of skills" class="bg-pink-700 px-3 py-1 rounded-full text-sm md:text-base">{{ skill }}</span>
       </div>
     </section>
-    
 
-    <section id="projects" class="min-h-3.5 mt-16 mb-16">
-      <h2 class="text-2xl font-semibold">My Works</h2>
-
-      <app-projects-card *ngFor="let project of projects" [projects]="project">
-      </app-projects-card>
-      
+    <!-- Experience Section -->
+    <section id="experience" class="mt-16 space-y-4 min-h-3.5">
+      <h2 class="text-2xl font-semibold">Experience</h2>
+      <app-experience-card *ngFor="let experience of experiences" [experience]="experience"></app-experience-card>
     </section>
-    <!-- <div class="mb-16">
-      <a
-        href="/archive  "
-        class="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600"
-      >
-        View Project Archive
-      </a>
-    </div> -->
 
-    <!-- <section id="blogs mt-16 mb-16">
-      <app-blog-card 
-      *ngFor="let blog of blogs" [blog]="blog"
+    <!-- Projects Section -->
+    <section id="projects" class="min-h-3.5 mt-16 mb-16">
+      <h2 class="text-2xl font-semibold">Projects</h2>
+      <app-projects-card *ngFor="let project of projects" [projects]="project"></app-projects-card>
+    </section>
+
+    <!-- Resume Download Button -->
+    <div class="mb-16 text-center">
+      <a
+        href="https://drive.google.com/file/d/1Ri7Iq02xJ5ArztOLemOKiuTIsHIql9j0/view?usp=sharing"
+        class="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600"
+        target="_blank"
+        rel="noopener noreferrer"
       >
-     </app-blog-card>
-    </section> -->
+        View Resume
+      </a>
+    </div>
   </div>
 </main>
+
+<!-- Decorative elements -->
 <div class="airplane-container">✈️</div>
 <div class="bubbles-container">
   <span class="bubble"></span>
