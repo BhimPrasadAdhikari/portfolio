@@ -2,7 +2,6 @@ import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { SocialLinksComponent } from './components/social-links.component';
 import { ExperienceCardComponent } from './components/experiance-card.component';
 import { NgClass, NgFor } from '@angular/common';
-// import { BlogCardComponent } from './components/blog-card.component';
 import { ProjectsCardComponent } from './components/projects-card.component';
 
 @Component({
@@ -12,129 +11,145 @@ import { ProjectsCardComponent } from './components/projects-card.component';
     ExperienceCardComponent,
     NgFor,
     ProjectsCardComponent,
-    // BlogCardComponent,
     NgClass,
   ],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements AfterViewInit {
   activeSection = 'about';
 
+  @ViewChild('scrollableContainer') scrollableContainer!: ElementRef;
+  @ViewChild('airplane', { static: true }) airplane!: ElementRef;
+
+  // Skills (existing + AI/ML stack + cloud/database)
+  skills = [
+    'React',
+    'Next.js',
+    'Angular',
+    'Node.js',
+    'Express.js',
+    'FastAPI',
+    'Django',
+    'MongoDB',
+    'PostgreSQL',
+    'SQL',
+    'Redis',
+    'Firebase',
+    'TensorFlow',
+    'PyTorch',
+    'LangChain',
+    'Google AI Solutions',
+    'BigQuery',
+    'TailwindCSS',
+    'TypeScript',
+    'REST API',
+    'GraphQL',
+    'Prisma',
+    'Pusher',
+    'JWT Web Tokens',
+    'Next Auth',
+    'Redux',
+    'Zustand',
+    'Zod',
+    'Headless UI',
+    'Figma',
+    'Docker',
+    'Python',
+    'Flask'
+  ];
+
+  // Experiences (AI/ML focused)
   experiences = [
     {
-      startingDate: '2020',
-      endingDate: 'present',
-      role: 'Frontend Developer',
-      field: 'FreeLancer',
-      companyName: 'Upwork',
+      startingDate: '2024',
+      endingDate: 'Present',
+      role: 'AI-Powered Agriculture Platform',
+      field: 'Personal Project',
+      companyName: 'Self',
       description:
-        'Developing web applications for clients. Mainly focusing on frontend development.Applying best practices and modern technologies to build scalable and maintainable web applications.',
+        'Built an AI-driven website to detect plant diseases using CNN. Developed chatbot with Dialogflow CX, integrated Vertex AI for field insights. Deployed on Vercel with real-time messaging using Pusher.',
       skills: [
-        'React',
-        'Next.js',
-        'TypeScript',
-        'TailwindCSS',
-        'Angular',
-        'Redux',
-        'Zustand',
-        'Zod',
-        'HeadLess UI',
-        'Figma',
+        'Next.js', 'TypeScript', 'MongoDB', 'Google Cloud', 'Vertex AI', 'Pusher', 'TensorFlow', 'Python', 'FastAPI'
       ],
-      url: 'https://www.upwork.com',
+      url: 'https://agritech-sigma.vercel.app/',
     },
     {
-      startingDate: '2022',
+      startingDate: '2024',
       endingDate: 'Present',
-      role: 'Backend Developer',
-      field: 'FreeLancer',
-      companyName: 'Freelancer.com',
+      role: 'RAG Chatbot',
+      field: 'Personal Project',
+      companyName: 'Self',
       description:
-        'Developing backend services for clients. Mainly focusing on backend development.Applying best practices and modern technologies to build scalable and maintainable web applications.',
-      skills: [
-        'Exprees.js',
-        'Node.js',
-        'MongoDB',
-        'Prisma',
-        'Mongoose',
-        'GraphQL',
-        'MySQL',
-        'PostgreSQL',
-      ],
-      url: 'https://www.freelancer.com',
+        'Developed Retrieval-Augmented Generation chatbot using LangChain and Pinecone vector database. Dockerized and deployed backend on Google Cloud Run.',
+      skills: ['Node.js', 'Express', 'LangChain', 'Pinecone', 'Docker', 'Google Cloud Run'],
+      url: '#',
+    },
+    {
+      startingDate: '2024',
+      endingDate: 'Present',
+      role: 'Multi-Agent RAG Chatbot',
+      field: 'Personal Project',
+      companyName: 'Self',
+      description:
+        'Built multi-agent chatbot using Document AI and Gemini. FastAPI backend containerized with Docker and deployed on Cloud Run.',
+      skills: ['Python', 'FastAPI', 'Document AI', 'Gemini', 'Docker', 'Google Cloud Run'],
+      url: '#',
+    },
+    {
+      startingDate: '2023',
+      endingDate: 'Present',
+      role: 'Multi-Merchant E-Commerce Platform',
+      field: 'Personal Project',
+      companyName: 'Self',
+      description:
+        'Developed multi-vendor e-commerce website with React, supporting product listings, authentication, and order management.',
+      skills: ['React', 'MongoDB', 'Next.js', 'TailwindCSS'],
+      url: '#',
     },
   ];
 
+  // Projects
   projects = [
     {
       thubnail:
         'https://res.cloudinary.com/dhlnyt7hf/image/upload/v1739420464/Screenshot_1_kx1sws.png',
-      title: 'AgriTech',
+      title: 'AI-Powered Agriculture Platform',
       description:
-        'Web Application for farmers to manage their crops.This web offers Real-time sattelite data of the field, AI plant disease detector,expert consultation through real-time chatting and video sharing system, dashboards for experts and admin, embedded e-commerce store that sells agriculture products, crop watering schedule reminder and emailing system.',
+        'CNN model for plant disease detection, LLM insights for farmers, Dialogflow CX chatbot, real-time communication using Pusher, and Google Cloud integrations.',
       skills: [
-        'Next.js',
-        'TypeScript',
-        'MongoDB',
-        'TailwindCSS',
-        'REST API',
-        'Prisma',
-        'web sockets',
-        'Pusher',
-        'JWT web tokens',
-        'Next Auth',
-        'Google Maps API',
-        'Flask',
-        'Python',
-        'Tensorflow',
-        'Pytorch',
-        'node.js',
-        'Redux',
+        'Next.js','TypeScript','MongoDB','TailwindCSS','Vertex AI','Pusher','FastAPI','TensorFlow','Python'
       ],
       url: 'https://agritech-sigma.vercel.app/',
     },
     {
       thubnail:
         'https://res.cloudinary.com/dhlnyt7hf/image/upload/v1739420427/2025-02-13_hm1r9b.png',
-      title: 'Kurta Glow',
+      title: 'RAG Chatbot (LangChain + Pinecone)',
       description:
-        'E-commerce website for selling traditional Nepali dresses. This website offers a wide range of traditional Nepali dresses, a user-friendly interface, and a secure payment gateway. It also has a dashboard for the admin to manage products, orders, and users. it has content management system for the admin to manage the content of the website.',
-      skills: [
-        'Next.js',
-        'TypeScript',
-        'MongoDB',
-        'TailwindCSS',
-        'REST API',
-        'Prisma',
-        'Clerk',
-        'JWT web tokens',
-        'Zustand',
-        'Zod',
-        'Headless UI',
-      ],
-      url: 'https://kurtaglow-y7cc.vercel.app/',
-    },
-  ];
-
-  blogs = [
-    {
-      thubnail:
-        'https://res.cloudinary.com/dhlnyt7hf/image/upload/v1739291612/hq720_euxucq.jpg',
-      title: 'Angular',
-      description: 'Learn Angular from scratch.',
-      url: 'https://www.angular.io',
+        'Retrieval-Augmented Generation chatbot, Express backend, Dockerized and deployed on Google Cloud Run.',
+      skills: ['Node.js','LangChain','Pinecone','Docker','Google Cloud Run'],
+      url: '#',
     },
     {
       thubnail:
-        'https://res.cloudinary.com/dhlnyt7hf/image/upload/v1739291714/1695497781676_lmmjvn.jpg',
-      title: 'React',
-      description: 'Learn React from scratch.',
-      url: 'https://www.reactjs.org',
+        'https://res.cloudinary.com/dhlnyt7hf/image/upload/v1739420435/2025-02-14_chatbot.png',
+      title: 'Multi-Agent RAG Chatbot',
+      description:
+        'Document AI + Gemini powered multi-agent chatbot with FastAPI backend, Dockerized and deployed on Cloud Run.',
+      skills: ['Python','FastAPI','Document AI','Gemini','Docker','Google Cloud Run'],
+      url: '#',
+    },
+    {
+      thubnail:
+        'https://res.cloudinary.com/dhlnyt7hf/image/upload/v1739420440/2025-02-15_ecommerce.png',
+      title: 'Multi-Merchant E-Commerce Platform',
+      description:
+        'React-based multi-vendor e-commerce platform with admin dashboard and product/order management.',
+      skills: ['React','MongoDB','Next.js','TailwindCSS'],
+      url: '#',
     },
   ];
-  @ViewChild('scrollableContainer') scrollableContainer!: ElementRef;
-  @ViewChild('airplane', { static: true }) airplane!: ElementRef;
 
   ngAfterViewInit(): void {
     const container = this.scrollableContainer.nativeElement;
@@ -151,31 +166,20 @@ export class HomeComponent implements AfterViewInit {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           this.activeSection = entry.target.id;
-          const airplane = document.querySelector(
-            '.airplane-container'
-          ) as HTMLElement;
+          const airplane = document.querySelector('.airplane-container') as HTMLElement;
           const index = Array.from(sections).indexOf(entry.target);
-
-          airplane.style.transform = `translateX(${index * 100}px) translateY(${
-            index * 50
-          }px)`;
+          airplane.style.transform = `translateX(${index * 100}px) translateY(${index * 50}px)`;
         }
       });
     }, observerOptions);
 
-    sections.forEach((section: Element) => {
-      observer.observe(section);
-    });
+    sections.forEach((section: Element) => observer.observe(section));
 
     bubbles.forEach((bubble) => {
       bubble.addEventListener('click', (event) => {
         const target = event.target as HTMLElement;
         target.classList.add('burst');
-
-        // Remove the bubble after the animation completes
-        setTimeout(() => {
-          target.remove();
-        }, 300);
+        setTimeout(() => target.remove(), 300);
       });
     });
   }
